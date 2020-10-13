@@ -42,6 +42,7 @@ var MakeDancer = function (top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
   this.setPosition(top, left);
+  this.timeStep = 0;
 };
 
 MakeDancer.prototype.step = function () {

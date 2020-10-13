@@ -18,16 +18,66 @@ $(document).ready(function() {
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
     // get the maker function for the kind of dancer we're supposed to make
+
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
 
-    var dancer = dancerMakerFunction(
+    var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
+    var currLeftDist = Number.parseInt(dancer.$node[0].style.left);
+    var currTopDist = Number.parseInt(dancer.$node[0].style.top);
+    // Iterate through the window.dancers array
+    for (let i = 0; i < window.dancers.length; i++) {
+      // Find the distance between this new dancer and the other dancers
+      var left = Number.parseInt(window.dancers[i].$node[0].style.left);
+      var top = Number.parseInt(window.dancers[i].$node[0].style.top);
+      if (!top) {
+        continue;
+      }
+      console.log(window.dancers[i]);
+
+      var dist = Math.sqrt( Math.pow((currLeftDist - left), 2) + Math.pow((currTopDist - top), 2) );
+      // If that distance is within 50px,
+      if (dist < 500) {
+        $(window.dancers[i].$node[0]).remove();
+      }
+        // All dancers within 50 px, have to get a red border
+    }
+
+    window.dancers.push(dancer);
+
     $('body').append(dancer.$node);
   });
+
+
+  $('.lineAllUp').on('click', function() {
+    // Iterate through the dancers in the global window
+    $('.dancer').css({'top': ''});
+    $('.dancer').css({'bottom': '0'});
+  });
+
+  $(document).on('mouseover', '.shark', function() {
+    $('#disco').animate({height: '300px', width: '300px'});
+  });
+  $(document).on('mouseout', '.shark', function() {
+    $('#disco').animate({height: '150px', width: '150px'});
+  });
+
+  $(document).on('mouseover', '.drake', function() {
+    $('.drake').remove();
+
+  });
+
 });
+
+
+
+
+
+// $("#target1").css("color", "blue");
 
