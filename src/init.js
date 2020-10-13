@@ -1,7 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
   window.dancers = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('.addDancerButton').on('click', function (event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -24,8 +24,8 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('.container').height() * Math.random() * 0.85,
+      $('.container').width() * Math.random() * 0.9,
       Math.random() * 1000
     );
 
@@ -39,38 +39,41 @@ $(document).ready(function() {
       if (!top) {
         continue;
       }
-      console.log(window.dancers[i]);
 
-      var dist = Math.sqrt( Math.pow((currLeftDist - left), 2) + Math.pow((currTopDist - top), 2) );
+      var dist = Math.sqrt(Math.pow((currLeftDist - left), 2) + Math.pow((currTopDist - top), 2));
       // If that distance is within 50px,
-      if (dist < 500) {
-        $(window.dancers[i].$node[0]).remove();
-      }
-        // All dancers within 50 px, have to get a red border
-    }
+      if (dist < 300) {
+        window.dancers[i].$node[0].src = 'images/balloon.gif';
 
+        var hide = function () {
+          window.dancers[i].$node[0].hidden = true;
+
+          if (window.dancers[i].$node[0].alt === 'siren') {
+            console.log('pass');
+            window.dancers[i].$node[0].className = 'hideThis';
+            console.log(window.dancers[i]);
+          }
+        };
+
+        setTimeout(hide, 500);
+
+        // $(window.dancers[i].$node[0]).delay(500).hide(1);
+      }
+    }
     window.dancers.push(dancer);
 
-    $('body').append(dancer.$node);
+    $('.container').append(dancer.$node);
+  });
+
+  $(document).on('mouseover', '.drake', function () {
+    $('.drake').css({ visibility: 'hidden' });
   });
 
 
-  $('.lineAllUp').on('click', function() {
+  $('.lineAllUp').on('click', function () {
     // Iterate through the dancers in the global window
-    $('.dancer').css({'top': ''});
-    $('.dancer').css({'bottom': '0'});
-  });
-
-  $(document).on('mouseover', '.shark', function() {
-    $('#disco').animate({height: '300px', width: '300px'});
-  });
-  $(document).on('mouseout', '.shark', function() {
-    $('#disco').animate({height: '150px', width: '150px'});
-  });
-
-  $(document).on('mouseover', '.drake', function() {
-    $('.drake').remove();
-
+    $('.dancer').css({ 'top': '' });
+    $('.dancer').css({ 'bottom': '0' });
   });
 
 });
@@ -81,3 +84,11 @@ $(document).ready(function() {
 
 // $("#target1").css("color", "blue");
 
+  // $(document).on('mouseover', '.shark', function() {
+  // $('.shark').animate({height: '300px', width: '300px'});
+  // $('.shark').toggle();
+  // });
+  // $(document).on('mouseout', '.shark', function() {
+  // $('.shark').animate({height: '150px', width: '150px'});
+  // $('.shark').toggle();
+  // });

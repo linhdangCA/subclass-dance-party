@@ -1,25 +1,44 @@
 body, html{
   height:100%;
 }
+
 body{
   margin: 0px;
   background-image: url(images/danceFloor.jpg);
   background-size: cover;
   font-size: 18px;
+  font-family: Gill Sans, sans-serif;
 }
+
+.container{
+  position: relative;
+  margin: 20px;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: rgb(66, 120, 138);
 }
 .title, .button{
   padding:5px 12px;
   float:right;
+  text-decoration: none;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  margin: 3px;
+  background-color: rgb(190, 190, 190);
+}
+
+.button:hover{
+  background-color: rgb(255, 255, 255);
 }
 .topbar{
-  height:32px;
+  height:40px;
   background-color: #555;
 }
 .title{
-  background-color: #777;
+  background-color: rgb(210, 224, 187);
 }
 .dancer{
   border:10px solid red;
@@ -33,7 +52,24 @@ body, a:link, a:visited, a:active{
   width: 150px;
 }
 
+.drake:hover{
+  display: none;
+}
+
 .shark{
+  border: none;
+  height: 150px;
+  width: 150px;
+  opacity: 0.7;
+  border-radius: 40px;
+}
+
+.shark:hover{
+  border: 4px dashed yellow;
+  opacity: 1;
+}
+
+.siren{
   border: none;
   height: 150px;
   width: 150px;
@@ -50,6 +86,10 @@ body, a:link, a:visited, a:active{
   margin-top: 10px;
   height: 150px;
   width: 150px;
-  margin-left: 50%;
+  margin-left: 45%;
   /*margin-right: auto;*/
+}
+
+.hideThis{
+  visibility: hidden;
 }
