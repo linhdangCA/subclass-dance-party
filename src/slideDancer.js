@@ -1,10 +1,12 @@
-/*
+
 var SlideDancer = function (top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<img class="dancer mj" src="images/mj.gif" alt="michael">');
   this.setPosition(top, left * 0.7);
   this.setTop = top;
+  this.setLeft = left;
   this.marginPosition = 0;
+  this.direction = true;
 };
 
 SlideDancer.prototype = Object.create(MakeDancer.prototype);
@@ -15,14 +17,23 @@ SlideDancer.prototype.step = function () {
   oldStep();
 
   this.$node.animate({ 'marginLeft': this.marginPosition }, 1000);
-  this.marginPosition += 100;
-  if (this.marginPosition > 900) {
-    this.marginPosition = 0;
-    this.setPosition(this.setTop, 0);
+
+  if (this.setLeft > 1200) {
+    this.direction = false;
+  } else if (this.setLeft < 200) {
+    this.direction = true;
+  }
+
+  if (this.direction) {
+    this.marginPosition += 100;
+    this.setLeft += 100;
+  } else if (!this.direction) {
+    this.marginPosition -= 100;
+    this.setLeft -= 100;
   }
 };
-*/
 
+/*
 var aDrake = function (top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<img class="dancer drake" src="images/drakeGIF.gif" alt="hotline">');
@@ -44,3 +55,4 @@ aDrake.prototype.step = function () {
     this.timeStep = 0;
   }
 };
+*/

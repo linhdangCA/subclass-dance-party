@@ -19,10 +19,6 @@ describe('leftSharkDancer', function () {
     expect(leftSharkDancer.$node.animate.called).to.be.true;
   });
 
-  // it('should have a dashed border when hovered', function () {
-  //
-  // expect();
-
   describe('dance', function () {
     it('should call step at least once per second', function () {
       sinon.spy(leftSharkDancer, 'step');

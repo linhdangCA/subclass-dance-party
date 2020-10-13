@@ -42,14 +42,14 @@ $(document).ready(function () {
 
       var dist = Math.sqrt(Math.pow((currLeftDist - left), 2) + Math.pow((currTopDist - top), 2));
       // If that distance is within 50px,
-      if (dist < 300) {
+      if (dist < 200) {
         window.dancers[i].$node[0].src = 'images/balloon.gif';
 
         var hide = function () {
           window.dancers[i].$node[0].hidden = true;
 
           if (window.dancers[i].$node[0].alt === 'siren') {
-            console.log('pass');
+            console.log(window.dancers[i].$node[0]);
             window.dancers[i].$node[0].className = 'hideThis';
             console.log(window.dancers[i]);
           }
@@ -77,18 +77,3 @@ $(document).ready(function () {
   });
 
 });
-
-
-
-
-
-// $("#target1").css("color", "blue");
-
-  // $(document).on('mouseover', '.shark', function() {
-  // $('.shark').animate({height: '300px', width: '300px'});
-  // $('.shark').toggle();
-  // });
-  // $(document).on('mouseout', '.shark', function() {
-  // $('.shark').animate({height: '150px', width: '150px'});
-  // $('.shark').toggle();
-  // });

@@ -13,7 +13,7 @@ describe('slideDancer', function () {
     expect(slideDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  // anything stand out to you yet ? nope... i've been looking. checked the sources. checekd the spec. checked the js. walked through the debugger. slideDancer variable is coming back undefined cause the new instance isn't com
+  // anything stand out to you yet ? nope... i've been looking. checked the sources. checekd the spec. checked the js. walked through the debugger. slideDancer variable is coming back undefined cause the new instance isn't completing
 
 
   it('should have a step function that makes its node change in size', function () {
